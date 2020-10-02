@@ -1,0 +1,30 @@
+extend _layout/_layout_body
+
+block append head
+	-
+		file = 'index';
+		meta = {
+			'title' : '',
+			'description' : '',
+			'keywords' : '',
+		};
+		css = [
+			'./assets/css/index.css',
+		];
+		og = {
+			//- 'site_name'   : '',
+			//- 'title'       : '',
+			//- 'type'        : 'article',
+			//- 'image'       : '',
+			//- 'locale'      : 'ja_JP',
+			//- 'url'         : '',
+			//- 'description' : '',
+		};
+		tw = {
+			// 'card'  : 'summary',
+			// 'title' : '',
+			// 'image' : '',
+		};
+
+block append content
+	include codepen/kirby

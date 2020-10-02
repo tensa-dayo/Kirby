@@ -1,0 +1,50 @@
+head
+	meta( charset="utf-8" )
+
+	if  meta.title
+		title #{meta.title}
+	else
+		title
+
+	meta( name="robots" content="noindex" )
+	meta( name="googlebot" content="noindex" )
+
+	//- icon
+	link( rel="shortcut icon" href="./assets/img/common/favicon.ico" )
+
+	//- IE対策
+	meta( http-equiv="X-UA-Compatible" content="IE=edge" )
+
+	//- その他設定
+	meta( name="format-detection" content="telephone=no" )
+	meta( name="viewport" content="width=device-width,initial-scale=1.0" )
+
+
+	//- keywords
+	if meta.keywords
+		meta( name="keywords", content=meta.keywords )
+
+	//- description
+	if meta.description
+		meta( name="description", content=meta.description )
+
+	//- og
+	if og
+		each og_val, og_name in og
+			meta( property=`og:${og_name}`, content=og_val )
+
+	//- twitter
+	if tw
+		each tw_val, tw_name in tw
+			meta( name=`twitter:${tw_name}`, content=tw_val )
+
+	//- css
+	//- link( rel="stylesheet", href="https://use.fontawesome.com/releases/v5.12.1/css/all.css" )
+	link( rel="stylesheet", href="./assets/css/normalize.css" )
+	//- link( rel="stylesheet", href="./assets/css/common.css" )
+
+	if css
+		each css_path in css
+			link( rel="stylesheet", href = css_path )
+
+	//- js

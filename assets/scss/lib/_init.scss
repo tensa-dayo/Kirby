@@ -1,0 +1,339 @@
+@charset 'utf-8';
+@import 'mixin';
+@import 'variable';
+
+/*------------------
+	Default Settings
+------------------*/
+*,
+*:before,
+*:after {
+	box-sizing: border-box;
+}
+
+// 網掛け時の色設定（まとめて記載したらダメ）
+*:selection {
+	// background: $gold;
+}
+
+*:-moz-selection {
+	// background: $gold;
+}
+
+html {
+	font-size: 10px;
+	position: relative;
+	min-height: 100%;
+	// overflow-y: scroll;
+	// type-kit、goolge-fonts読み込み時のカクツキを解消
+	&.wf-loading {
+		visibility: hidden;
+	}
+	&.wf-active {
+		visibility: visible;
+	}
+}
+
+body {
+	font-family: Avenir, 'Open Sans', 'Helvetica Neue', Helvetica , Arial , Verdana, '游ゴシック', YuGothic, 'ヒラギノ角ゴ Pro W3', 'Hiragino Kaku Gothic Pro', 'メイリオ', Meiryo, sans-serif;
+	font-size: 1.6em;
+	line-height: 1.6;
+	margin: 0;
+	// 游フォントを使うとIEで崩れるので IE hack で回避
+	@media all and (-ms-high-contrast:none) {
+		font-family: 'メイリオ', Meiryo, '游ゴシック', YuGothic, 'ヒラギノ角ゴ Pro W3', 'Hiragino Kaku Gothic Pro', 'メイリオ', Meiryo, sans-serif;
+	}
+	// overflow: hidden;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ul,
+ol,
+li,
+dl,
+dt,
+dd {
+	margin: 0;
+	padding: 0;
+}
+
+ul,
+ol {
+	list-style-type: none;
+}
+
+a {
+	text-decoration: none;
+}
+
+img {
+	max-width: 100%;
+	height: auto;
+	vertical-align: bottom;
+}
+
+// margin, padding @8x
+@for $i from 1 through 10 {
+	$num: 8 * $i;
+
+	@include bp( min, 600px ) {
+		.mt#{ $num } {
+			margin-top: #{ $num * 1px };
+		}
+		.mr#{ $num } {
+			margin-right: #{ $num * 1px };
+		}
+		.mb#{ $num } {
+			margin-bottom: #{ $num * 1px };
+		}
+		.ml#{ $num } {
+			margin-left: #{ $num * 1px };
+		}
+		.pt#{ $num } {
+			padding-top: #{ $num * 1px };
+		}
+		.pr#{ $num } {
+			padding-right: #{ $num * 1px };
+		}
+		.pb#{ $num } {
+			padding-bottom: #{ $num * 1px };
+		}
+		.pl#{ $num } {
+			padding-left: #{ $num * 1px };
+		}
+	}
+}
+
+// margin, padding @10x
+@for $i from 1 through 20 {
+	@if $i % 4 != 0 {
+		$num: 10 * $i;
+
+		@include bp( min, 600px ) {
+			.mt#{ $num } {
+				margin-top: #{ $num * 1px };
+			}
+			.mr#{ $num } {
+				margin-right: #{ $num * 1px };
+			}
+			.mb#{ $num } {
+				margin-bottom: #{ $num * 1px };
+			}
+			.ml#{ $num } {
+				margin-left: #{ $num * 1px };
+			}
+			.pt#{ $num } {
+				padding-top: #{ $num * 1px };
+			}
+			.pr#{ $num } {
+				padding-right: #{ $num * 1px };
+			}
+			.pb#{ $num } {
+				padding-bottom: #{ $num * 1px };
+			}
+			.pl#{ $num } {
+				padding-left: #{ $num * 1px };
+			}
+		}
+	}
+}
+
+// clear fix
+.cf {
+	&:after {
+		display: block;
+		clear: both;
+		width: 100%;
+		content: '';
+	}
+}
+
+.dropCap {
+	// 文字の先頭
+	&:first-letter {
+		font-size: 120px;
+	}
+}
+
+// text-align
+.ta {
+	&-l {
+		text-align: left;
+	}
+	&-c {
+		text-align: center;
+	}
+	&-r {
+		text-align: right;
+	}
+}
+
+.show {
+	// display: initial; // IE11非対応
+	display: block;
+
+	&--pc {
+		@include bp( max, 600px ) {
+			display: none;
+		}
+
+		&--i {
+			display: inline;
+
+			@include bp( max, 600px ) {
+				display: none;
+			}
+		}
+	}
+
+	&--sp {
+		display: none;
+
+		@include bp( max, 600px ) {
+			// display: initial; // IE11非対応
+			display: block;
+		}
+
+		&--i {
+			display: none;
+
+			@include bp( max, 600px ) {
+				display: inline;
+			}
+		}
+	}
+
+	& {
+		// 各言語
+		$langs: ( ja, en, zh );
+
+		// 1 -- START
+		@each $lang in $langs {
+			// .show--#{ $lang }
+			&--#{ $lang },
+			&--#{ $lang }--i {
+				display: none !important;
+			}
+		}
+
+		@each $lang in $langs {
+			// .#{ $lang } .show--#{ $lang }
+			.#{ $lang } & {
+				&--#{ $lang } {
+					display: block !important;
+
+					&--i {
+						display: inline !important;
+					}
+				}
+			}
+		}
+		// 1 -- END
+	}
+}
+
+/**
+ * Flex 
+ */
+.flex {
+	display: flex;
+}
+
+// align-items
+.ai {
+	&-fs {
+		align-items: flex-start;
+	}
+	&-c {
+		align-items: center;
+	}
+	&-fe {
+		align-items: flex-end;
+	}
+}
+
+// justify-content
+.jc {
+	&-sb {
+		justify-content: space-between;
+	}
+	&-sa {
+		justify-content: space-around;
+	}
+	&-c {
+		justify-content: center;
+	}
+}
+
+.fw-w {
+	flex-wrap: wrap;
+}
+
+.btn {
+	&--kadomaru {
+		a {
+			overflow: hidden;
+			border-radius: 99999999px;
+		}
+	}
+}
+
+.container {
+	width: 100%;
+	max-width: 1400px;
+	margin: {
+		right: auto !important;
+		left: auto !important;
+	};
+	padding: {
+		right: 20px !important;
+		left: 20px !important;
+	};
+
+	@include bp( max, 600px ) {
+		margin: {
+			right: auto !important;
+			left: auto !important;
+		};
+		padding: {
+			right: vw_sp( 20 ) !important;
+			left: vw_sp( 20 ) !important;
+		}
+	}
+}
+
+.col {
+	$length: 15;
+	$margin: 5px;
+
+	/**
+	 : ./_mixin.scss
+
+	 * @mixin column( $length, $margin )
+	 * @mixin bp( $type: min, $num1: false, $num2: false )
+	 * @function vw_sp( $num )
+	 * @function unit_delete( $num )
+	 */
+	@for $i from 1 through $length {
+		@include column( $i, $margin );
+		@include bp( max, 600px ) {
+			@include column( $i, vw_sp( unit_delete( $margin ) ) );
+		}
+	}
+}
+
+.grid {
+	$length: 15;
+
+	@include grid( $length );
+
+	&__item {
+		flex: 1 1 auto;
+	}
+}

@@ -1,0 +1,11 @@
+prepros.cfg
+prepros.config
+prepros-6.config
+.DS_Store
+.settings
+.buildpath
+.project
+.htaccess
+.htpasswd
+
+#.gitignore

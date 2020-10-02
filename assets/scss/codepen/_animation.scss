@@ -1,0 +1,237 @@
+@charset 'utf-8';
+.Kirby {
+	$parent: #{&};
+	$set--left-right--duration: .15s;
+
+	&.standby {
+		#{$parent} {
+			&__face {
+				animation: standby_-_face 1.5s ease-in-out 0s infinite alternate;
+			}
+
+			&__arm {
+				&--left {
+					animation: standby_-_arm--left 1.5s ease-in-out 0s infinite alternate;
+				}
+
+				&--right {
+					animation: standby_-_arm--right 1.5s ease-in-out 0s infinite alternate;
+				}
+			}
+		}
+
+		&.blinks--1 {
+			.Kirby__eye {
+				animation: blink1 .2s linear 0s;
+			}
+		}
+
+		&.blinks--2 {
+			.Kirby__eye {
+				animation: blink2 .5s linear 0s;
+			}
+		}
+	}
+
+	&.set--left {
+		// $Kirby-body: rgba(blue,.2);
+		#{$parent} {
+			&__arm {
+				background: $Kirby-body;
+				&--right {
+					animation: set--left_-_arm--right $set--left-right--duration linear 0s forwards;
+				}
+				&--left {
+					animation: set--left_-_arm--left $set--left-right--duration linear 0s forwards;
+				}
+			}
+
+			&__eye {
+				&--left {
+					animation: set--left_-_eye--left $set--left-right--duration linear 0s forwards;
+				}
+
+				&--right {
+					animation: set--left_-_eye--right $set--left-right--duration linear 0s forwards;
+				}
+			}
+
+			&__cheek {
+				animation: set--left_-_cheek $set--left-right--duration linear 0s forwards;
+
+				&:before {
+					animation: set--left_-_cheek--before $set--left-right--duration linear 0s forwards;
+				}
+
+				&:after {
+					animation: set--left_-_cheek--after $set--left-right--duration linear 0s forwards;
+				}
+			}
+
+			&__mouth {
+				animation: set--left_-_mouth $set--left-right--duration linear 0s forwards;
+			}
+
+			&__leg {
+				&--right {
+					animation: set--left_-_leg--right $set--left-right--duration linear 0s forwards;
+				}
+			}
+		}
+	}
+
+	&.set--right {
+		#{$parent} {
+			&__arm {
+				&--right {
+					animation: set--right_-_arm--right $set--left-right--duration linear 0s forwards;
+				}
+				&--left {
+					animation: set--right_-_arm--left $set--left-right--duration linear 0s forwards;
+				}
+			}
+
+			&__eye {
+				&--left {
+					top: 36%;
+					left: 72%;
+					animation: set--right_-_eye--left $set--left-right--duration linear 0s forwards;
+				}
+
+				&--right {
+					top: 37%;
+					left: 50%;
+					animation: set--right_-_eye--right $set--left-right--duration linear 0s forwards;
+				}
+			}
+
+			&__cheek {
+				animation: set--right_-_cheek $set--left-right--duration linear 0s forwards;
+
+				&:before {
+					animation: set--right_-_cheek--before $set--left-right--duration linear 0s forwards;
+				}
+
+				&:after {
+					animation: set--right_-_cheek--after $set--left-right--duration linear 0s forwards;
+				}
+			}
+
+			&__mouth {
+				animation: set--right_-_mouth $set--left-right--duration linear 0s forwards;
+			}
+
+			&__leg {
+				&--left {
+					animation: set--right_-_leg--left $set--left-right--duration linear 0s forwards;
+				}
+			}
+		}
+	}
+
+	&.leftward {
+		#{$parent} {
+			&__arm {
+				&--left {
+					z-index: 1;
+				}
+
+				&--right {
+					z-index: -1;
+				}
+			}
+
+			&__eye {
+				transform: translate( -50%, -50% ) rotate( 2.5deg );
+
+				&--left {
+					top: 37%;
+					left: 50%;
+				}
+
+				&--right {
+					top: 36%;
+					left: 28%;
+				}
+			}
+
+			&__cheek {
+				&:before {
+					top: -35%;
+					right: 74%;
+					width: 9%;
+				}
+
+				&:after {
+					top: 0;
+					right: 30%;
+					width: 13%;
+				}
+			}
+
+			&__mouth {
+				top: 63%;
+				left: 37%;
+			}
+
+			// &__leg {
+			// 	z-index: -1;
+			// 	width: 65%;
+			// 	border-radius: 75% 0 45% 30%;
+
+			// 	&--left {
+			// 		right: -15%;
+			// 	}
+
+			// 	&--right {
+			// 		left: -15%;
+			// 	}
+			// }
+		}
+	}
+
+	&.rightward {
+		#{$parent} {
+			&__arm {
+				&--left {
+					z-index: -1;
+				}
+
+				&--right {
+					z-index: 1;
+				}
+			}
+
+			&__eye {
+				&--left {
+					top: 36%;
+					left: 72%;
+				}
+
+				&--right {
+					top: 37%;
+					left: 50%;
+				}
+			}
+
+			&__cheek {
+				&:before {
+					top: 0;
+					right: 56%;
+					width: 13%;
+				}
+
+				&:after {
+					top: -35%;
+					right: 17%;
+					width: 9%;
+				}
+			}
+
+			&__mouth {
+				top: 63%;
+				left: 63%;
+			}
+		}
+	}
+}

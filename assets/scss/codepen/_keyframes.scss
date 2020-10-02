@@ -1,0 +1,374 @@
+@charset 'utf-8';
+/**
+ * Naming-rule1 : #{status}_-_#{move Class}
+ * Naming-rule2 : #{status}#{No}
+ */
+
+/*---------*\
+ * standby *
+\*---------*/
+@keyframes standby_-_face {
+	0% {
+		transform: scale( 1 );
+	}
+
+	100% {
+		transform: translate( 0, -1% ) scale( 1.03 );
+	}
+}
+@keyframes standby_-_arm--left {
+	0% {
+		transform: translate( 26%, -55% ) rotateZ( 60deg ) rotateY( -180deg );
+	}
+	100% {
+		transform: translate( 40%, -60% ) rotateZ( 45deg ) rotateY( -180deg );
+	}
+}
+@keyframes standby_-_arm--right {
+	0% {
+		transform: translate( -26%, -55% ) rotate( -60deg );
+	}
+	100% {
+		width: 40%;
+		transform: translate( -40%, -60% ) rotate( -45deg );
+	}
+}
+
+/*-------*\
+ * blink *
+\*-------*/
+@keyframes blink1 {
+	0% {
+		top: 36%;
+		height: 34%;
+	}
+	50% {
+		top: 40%;
+		height: 0;
+	}
+	100% {
+		top: 36%;
+		height: 34%;
+	}
+}
+@keyframes blink2 {
+	0% {
+		top: 36%;
+		height: 34%;
+	}
+	25% {
+		top: 40%;
+		height: 0;
+	}
+	50% {
+		top: 38%;
+		height: 30%;
+	}
+	75% {
+		top: 40%;
+		height: 0;
+	}
+	100% {
+		top: 36%;
+		height: 34%;
+	}
+}
+
+/*-----------*\
+ * set--left *
+\*-----------*/
+@keyframes set--left_-_arm--left {
+	0% {
+		z-index: -1;
+	}
+	74% {
+		z-index: -1;
+	}
+	75% {
+		z-index: 1;
+	}
+	100% {
+		z-index: 1;
+	}
+}
+@keyframes set--left_-_arm--right {
+	0% {
+		z-index: -1;
+	}
+	74% {
+		z-index: -1;
+	}
+	75% {
+		z-index: -1;
+	}
+	100% {
+		z-index: -1;
+	}
+}
+
+@keyframes set--left_-_eye--left {
+	0% {
+		top: 36%;
+		left: 72%;
+		transform: translate( -50%, -50% ) rotate( -2.5deg );
+	}
+	50% {
+		top: 28%;
+		left: 61%;
+	}
+	100% {
+		top: 37%;
+		left: 50%;
+		transform: translate( -50%, -50% ) rotate( 2.5deg );
+	}
+}
+@keyframes set--left_-_eye--right {
+	0% {
+		top: 37%;
+		left: 50%;
+		transform: translate( -50%, -50% ) rotate( -2.5deg );
+	}
+	50% {
+		top: 28%;
+		left: 39%;
+	}
+	100% {
+		top: 36%;
+		left: 28%;
+		transform: translate( -50%, -50% ) rotate( 2.5deg );
+	}
+}
+
+@keyframes set--left_-_cheek {
+	0% {
+		top: 50%;
+	}
+	50% {
+		top: 45%;
+	}
+	100% {
+		top: 50%;
+	}
+}
+@keyframes set--left_-_cheek--before {
+	0% {
+		top: 0;
+		right: 56%;
+		width: 13%;
+	}
+	50% {
+		top: 0;
+		right: 65%;
+		width: 11%;
+	}
+	100% {
+		top: -35%;
+		right: 74%;
+		width: 9%;
+	}
+}
+@keyframes set--left_-_cheek--after {
+	0% {
+		top: -35%;
+		right: 17%;
+		width: 9%;
+	}
+	50% {
+		top: 0;
+		right: 26%;
+		width: 11%;
+	}
+	100% {
+		top: 0;
+		right: 30%;
+		width: 13%;
+	}
+}
+
+@keyframes set--left_-_mouth {
+	0% {
+		top: 63%;
+		left: 63%;
+	}
+	50% {
+		top: 50%;
+		left: 50%;
+	}
+	100% {
+		top: 63%;
+		left: 37%;
+	}
+}
+
+@keyframes set--left_-_leg--right {
+	0% {
+		z-index: 1;
+		left: 10%;
+		width: 50%;
+		border-radius: 32% 68% 37% 63% / 36% 66% 34% 64%;
+	}
+	30% {
+		z-index: 1;
+		left: 10%;
+		width: 50%;
+		border-radius: 32% 68% 37% 63% / 36% 66% 34% 64%;
+	}
+	75% {
+		z-index: -1;
+	}
+	100% {
+		z-index: -1;
+		left: -15%;
+		width: 65%;
+		border-radius: 75% 0 45% 30%;
+	}
+}
+
+/*------------*\
+ * set--right *
+\*------------*/
+@keyframes set--right_-_arm--left {
+	0% {
+		z-index: -1;
+	}
+	74% {
+		z-index: -1;
+	}
+	75% {
+		z-index: -1;
+	}
+	100% {
+		z-index: -1;
+	}
+}
+@keyframes set--right_-_arm--right {
+	0% {
+		z-index: -1;
+	}
+	74% {
+		z-index: -1;
+	}
+	75% {
+		z-index: 1;
+	}
+	100% {
+		z-index: 1;
+	}
+}
+
+@keyframes set--right_-_eye--left {
+	0% {
+		top: 37%;
+		left: 50%;
+		transform: translate( -50%, -50% ) rotate( 2.5deg );
+	}
+	50% {
+		top: 28%;
+		left: 61%;
+	}
+	100% {
+		top: 36%;
+		left: 72%;
+		transform: translate( -50%, -50% ) rotate( -2.5deg );
+	}
+}
+@keyframes set--right_-_eye--right {
+	0% {
+		top: 36%;
+		left: 28%;
+		transform: translate( -50%, -50% ) rotate( 2.5deg );
+	}
+	50% {
+		top: 28%;
+		left: 39%;
+	}
+	100% {
+		top: 37%;
+		left: 50%;
+		transform: translate( -50%, -50% ) rotate( -2.5deg );
+	}
+}
+
+@keyframes set--right_-_cheek {
+	0% {
+		top: 50%;
+	}
+	50% {
+		top: 45%;
+	}
+	100% {
+		top: 50%;
+	}
+}
+@keyframes set--right_-_cheek--before {
+	0% {
+		top: -35%;
+		right: 74%;
+		width: 9%;
+	}
+	50% {
+		top: 0;
+		right: 65%;
+		width: 11%;
+	}
+	100% {
+		top: 0;
+		right: 56%;
+		width: 13%;
+	}
+}
+@keyframes set--right_-_cheek--after {
+	0% {
+		top: 0;
+		right: 30%;
+		width: 13%;
+	}
+	50% {
+		top: 0;
+		right: 26%;
+		width: 11%;
+	}
+	100% {
+		top: -35%;
+		right: 17%;
+		width: 9%;
+	}
+}
+
+@keyframes set--right_-_mouth {
+	0% {
+		top: 63%;
+		left: 37%;
+	}
+	50% {
+		top: 50%;
+		left: 50%;
+	}
+	100% {
+		top: 63%;
+		left: 63%;
+	}
+}
+@keyframes set--right_-_leg--left {
+	0% {
+		z-index: 1;
+		right: 10%;
+		width: 50%;
+		border-radius: 32% 68% 37% 63% / 36% 66% 34% 64%;
+	}
+	30% {
+		z-index: 1;
+		right: 10%;
+		width: 50%;
+		border-radius: 32% 68% 37% 63% / 36% 66% 34% 64%;
+	}
+	75% {
+		z-index: -1;
+	}
+	100% {
+		z-index: -1;
+		right: -15%;
+		width: 65%;
+		border-radius: 75% 0 45% 30%;
+	}
+}

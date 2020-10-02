@@ -1,0 +1,361 @@
+@charset 'utf-8';
+@import 'keyframes';
+
+/*------*\
+ | size |
+\*------*/
+$Kirby-size: 100px;
+
+/*-------*\
+ | Color |
+\*-------*/
+// $Kirby-border: #CA5B6E;
+// $Kirby-body: #F4A5AB;
+// $Kirby-leg: #DD6580;
+// $Kirby_eye-border: #593A33;
+$Kirby-border: #3E0A0A;
+$Kirby-body: #FFA2DE;
+$Kirby-leg: #FF1784;
+$Kirby_eye-border: #000;
+
+/*--------*\
+ | border |
+\*--------*/
+$border-size: $Kirby-size * .05;
+
+
+/*------------*\
+ | controlBtn |
+\*------------*/
+$btn-bg: #FFA2DE;
+$btn-size: 50px;
+$btn-margin: 10px;
+$shadow-size: $btn-size / 50 * 3;
+$shadow-color: darken( $btn-bg, 25% );
+
+.Kirby {
+	$parent: #{&};
+
+	* {
+		box-sizing: border-box;
+
+		&:before,
+		&:after {
+			box-sizing: border-box;
+		}
+	}
+
+	&__body {
+		position: relative;
+		z-index: 1;
+		width: $Kirby-size * .83;
+		height: $Kirby-size * .8;
+		margin-top: $Kirby-size / 10;
+		margin-left: $Kirby-size / 5;
+		border-radius: 50%;
+	}
+
+	&__face {
+		position: relative;
+		top: -#{$border-size};
+		left: -#{$border-size};
+		width: calc( #{$border-size} * 2 + 100% );
+		height: calc( #{$border-size} * 2 + 100% );
+		border: $border-size solid $Kirby-border;
+		border-radius: 50%;
+		background: $Kirby-body;
+	}
+
+	&__eye {
+		position: absolute;
+		z-index: 1;
+		overflow: hidden;
+		width: 12%;
+		height: 34%;
+		transform: translate( -50%, -50% ) rotate( -2.5deg );
+		// animation: none;
+		border: $Kirby-size * .015 solid $Kirby_eye-border;
+		border: $Kirby-size * .025 solid $Kirby_eye-border;
+		border-radius: 50%;
+		background: $Kirby_eye-border;
+
+		&:before {
+			z-index: 1;
+			top: 0;
+			display: block;
+			width: calc( 100% - #{ $Kirby-size * .015 } );
+			height: 45%;
+			margin: 0 auto;
+			content: '';
+			border-radius: 50%;
+			background: #FFF;
+
+			@include absolute( true, false );
+		}
+
+		&--left {
+			top: 36%;
+			left: 72%;
+		}
+
+		&--right {
+			top: 37%;
+			left: 50%;
+		}
+
+		&__glow {
+			$args: (
+			50% : rgba( 2, 43, 88, 1 ),
+			100% : rgba( 0, 124, 191, 1 ),
+			);
+
+			position: relative;
+			width: 100%;
+			height: 100%;
+
+			@include linear-gradient( 'to bottom', $args );
+
+			&:before {
+				top: 0;
+				display: block;
+				width: 100%;
+				height: 70%;
+				margin: 0 auto;
+				content: '';
+				border-radius: 0 0 40% 40%;
+				background: $Kirby_eye-border;
+
+				@include absolute( true, false );
+			}
+		}
+	}
+
+	&__cheek {
+		position: relative;
+		z-index: 0;
+		top: 50%;
+		left: 0;
+		height: 5%;
+
+		&:before,
+		&:after {
+			position: absolute;
+			display: block;
+			height: 100%;
+			content: '';
+			border-radius: 20px;
+			background: #FF1784;
+		}
+
+		&:before {
+			top: 0;
+			right: 56%;
+			width: 13%;
+		}
+
+		&:after {
+			top: -35%;
+			right: 17%;
+			width: 9%;
+		}
+	}
+
+	&__mouth {
+		position: absolute;
+		top: 63%;
+		left: 63%;
+		width: $Kirby-size * 1.5 / 30;
+		height: $Kirby-size * 1.5 / 30;
+		transform: translate( -50%, -50% );
+		border-radius: 50%;
+		background: #B42038;
+	}
+
+	&__arm {
+		position: absolute;
+		top: 60%;
+		width: 44%;
+		height: 41%;
+		transform: translate( -50%, -50% );
+		border: $border-size solid $Kirby-border;
+		border-right: none;
+		border-bottom: none;
+		border-radius: 50% 0 50% 50%;
+		background: $Kirby-body;
+
+		&--left {
+			z-index: -1;
+			right: -6%;
+			transform: translate( 26%, -55% ) rotateZ( 60deg ) rotateY( -180deg );
+		}
+
+		&--right {
+			z-index: 1;
+			left: -6%;
+			transform: translate( -26%, -55% ) rotate( -60deg );
+		}
+	}
+
+	&__leg {
+		position: absolute;
+		z-index: -1;
+		bottom: calc( -#{ $Kirby-size * .13 } );
+		width: 65%;
+		height: 45%;
+		border: $border-size solid $Kirby-border;
+		border-radius: 75% 0 45% 30%;
+		background: $Kirby-leg;
+
+		&--left {
+			right: -15%;
+			transform: rotateY( -180deg );
+		}
+
+		&--right {
+			left: -15%;
+		}
+	}
+}
+
+.Kirby--mirror {
+	display: none;
+	position: absolute;
+	z-index: 99999999;
+	top: #{ ( $Kirby-size / -10 ) };
+	left: 0;
+	opacity: .5;
+
+	@extend .Kirby;
+
+	.Kirby__body {
+		transform: rotateY( 180deg );
+	}
+}
+
+@import 'animation';
+
+
+.controlBtn {
+	position: fixed;
+	z-index: 1;
+	right: 0;
+	bottom: $btn-size;
+
+	&__inner {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+
+		& + & {
+			margin-top: $btn-margin;
+		}
+
+		&:before,
+		&:after {
+			display: block;
+			width: $btn-size;
+			height: $btn-size;
+			padding-bottom: $shadow-size;
+			content: '';
+			transition: margin-bottom .1s;
+		}
+	}
+
+	&__wrap {
+		width: $btn-size;
+		height: $btn-size;
+		padding-bottom: $shadow-size;
+		transition: margin-bottom .1s;
+
+		& + & {
+			margin-left: $btn-margin;
+		}
+
+		&:active {
+			margin-bottom: -$shadow-size;
+
+			.controlBtn__item {
+				margin-top: $shadow-size;
+				box-shadow: 0 0 0 $shadow-color;
+			}
+		}
+	}
+
+	&__item {
+		position: relative;
+		width: 100%;
+		height: 100%;
+		transition: margin-top .1s, box-shadow .1s;
+		border-radius: $shadow-size;
+		background: $btn-bg;
+		box-shadow: 0 $shadow-size 0 $shadow-color;
+
+		&:before,
+		&:after {
+			position: absolute;
+			display: block;
+			content: '';
+		}
+
+		&:before {
+			width: $btn-size * .6;
+			height: $btn-size / 20;
+			background: #FFF;
+
+			@include absolute( true, true );
+		}
+
+		&:after {
+			width: $btn-size * .3;
+			height: $btn-size * .3;
+			border: $btn-size / 20 solid #FFF {
+				top: none;
+				right: none;
+			}
+		}
+
+		&--top {
+			&:before {
+				transform: translate( 50%, 50% ) rotate( 90deg );
+			}
+
+			&:after {
+				top: $btn-size * .2;
+				left: 50%;
+				transform: translate( -50%, 0 ) rotate( 135deg );
+			}
+		}
+
+		&--left {
+			&:after {
+				top: 50%;
+				left: $btn-size * .2;
+				transform: translate( 0, -50% ) rotate( 45deg );
+			}
+		}
+
+		&--bottom {
+			&:before {
+				transform: translate( 50%, 50% ) rotate( 90deg );
+			}
+
+			&:after {
+				right: 50%;
+				bottom: $btn-size * .2;
+				transform: translate( 50%, 0 ) rotate( -45deg );
+			}
+		}
+
+		&--right {
+			&:after {
+				top: 50%;
+				right: $btn-size * .2;
+				transform: translate( 0, -50% ) rotate( 225deg );
+			}
+		}
+	}
+}
+
+.relative {
+	position: relative;
+}
